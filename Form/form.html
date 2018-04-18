@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style type="text/css">
+	body{
+		background-image: url(retyy.jpg);
+		background-size: cover;
+		background-position: absolute;
+	}
+	.teks{
+		font-size: 18px;
+		font-family: arial;
+		color: white;
+		text-align: center;
+	}
+	h1{
+		color: white;
+    	background: linear-gradient(to bottom, #33ddff 0%, #33ee99 100%);
+    	margin-top: 1px;
+	}
+
+	</style>
+	<script>
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev) {
+    ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("text");
+    ev.target.appendChild(document.getElementById(data));
+}
+</script>
+</head>
+<body>
+	<div class="teks">
+		<form>
+			<h1 style="font-family:arial; font-size=100px;" >DAFTARKAN DIRI ANDA</h1>
+			<form action="/action_page.php" autocomplete="on">
+				Nama Lengkap :<br>
+				<input type:"text" name="fullname" style="width:180px; height:20px;"><br>
+				Email :<br>
+				<input type="email" name="email" autocomplete="off" style="width:180px; height:20px;"><br>
+				<input type="hidden" name="action" autocomplete="users/setpassword">
+				<input type="hidden" name="code" autocomplete="{{ code }}">
+				<input type="hidden" name="id" autocomplete="{{ id }}">
+				<label for="newpassword" >Password</label><br>
+				<input id="newpassword" type="password" name="newpassword" style="width:180px; height:20px;"><br>
+				<label for="newpassword">Konfirmasi Password</label><br>
+				<input id="newpassword" type="password" name="confirmpassword" style="width:180px; height:20px;"><br>
+				Jenis Kelamin :<br>
+				<select name="jeniskelamin" style="width:180px; height:20px;"><br>
+					<option value="pria">Laki - laki</option>
+					<option value="wanita">Perempuan</option></select><br>
+				Alamat :<br>
+				<textarea name="message" style="width:180px; height:60px;"></textarea>
+				<br>
+				Nomor Telepon :<br>
+				<input type="text" name="nohp" style="width:180px; height:20px;"><br><br>
+				<button>
+				<input type="submit" value="Register">
+				</button>
+				<button>
+				<input type="reset" value="Batal"><br>
+				</button>
+
+			</form>
+		</form>
+		<br>
+		<div class="tulisan">
+			<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+			<img id="drag1" src="yel.gif" draggable="true"ondragstart="drag(event)" width="100" height="80">
+
+</body>
+</html>
